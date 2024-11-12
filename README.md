@@ -2,7 +2,7 @@
 
 ![Python Version](https://img.shields.io/badge/Python-3.13.0-blue) ![Magisk](https://img.shields.io/badge/Magisk-Module-green)
 
-A Magisk module to install **Python 3.13.0** on Android (**ARM64 only**), including the standard library (stdlib). This was built according to the official [Python for Android guidelines](https://github.com/python/cpython/blob/3.13/Android/README.md).
+A Magisk module to install **Python 3.13.0** on Android (**ARM only**), including the standard library (stdlib). This was built according to the official [Python for Android guidelines](https://github.com/python/cpython/blob/3.13/Android/README.md).
 
 ## Installation
 
