@@ -1,0 +1,7 @@
+id=pydroid
+name=Pydroid
+version=v0.1.0
+versionCode=100
+author=Mrakorez
+description=CPython 3.13.0 + stdlib
+updateJson=https://raw.githubusercontent.com/Mrakorez/pydroid/master/update.json
