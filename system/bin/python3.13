@@ -5,6 +5,8 @@ PYDROID_DIR="/data/local/pydroid"
 export PATH="${PYDROID_DIR}/usr/bin:${PATH}"
 export LD_LIBRARY_PATH="${PYDROID_DIR}/usr/lib:${LD_LIBRARY_PATH}"
 
+export XDG_CACHE_HOME="${PYDROID_DIR}/.cache"
+
 [ ! "${TMPDIR}" ] &&
   export TMPDIR="${PYDROID_DIR}/.tmp"
 
