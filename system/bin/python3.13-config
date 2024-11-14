@@ -1,11 +1,11 @@
 #!/system/bin/sh
 
-MODDIR="/data/adb/modules/pydroid"
+PYDROID_DIR="/data/local/pydroid"
 
-export PATH="${MODDIR}/usr/bin:${PATH}"
-export LD_LIBRARY_PATH="${MODDIR}/usr/lib:${LD_LIBRARY_PATH}"
+export PATH="${PYDROID_DIR}/usr/bin:${PATH}"
+export LD_LIBRARY_PATH="${PYDROID_DIR}/usr/lib:${LD_LIBRARY_PATH}"
 
 [ ! "${TMPDIR}" ] &&
-  export TMPDIR="${MODDIR}/usr/tmp"
+  export TMPDIR="${PYDROID_DIR}/.tmp"
 
 python3.13-config "$@"

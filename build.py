@@ -16,6 +16,7 @@ INCLUDE = {
     "system/bin/pydoc3.13",
     "system/bin/python3.13-config",
     "system/bin/python3.13",
+    "uninstall.sh",
 }
 
 INCLUDE_XZ = {
