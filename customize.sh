@@ -2,20 +2,24 @@
 
 case "${ARCH}" in
   "arm64")
-    mv "${MODPATH}/python/arm64/usr" "${MODPATH}"
+    tar -xf "${MODPATH}/python/arm64.tar.xz" -C "${MODPATH}" \
+      --strip-components 1
     ;;
   "arm")
-    mv "${MODPATH}/python/arm/usr" "${MODPATH}"
+    tar -xf "${MODPATH}/python/arm.tar.xz" -C "${MODPATH}" \
+      --strip-components 1
     ;;
   *)
     abort "! Your device architecture is not supported"
     ;;
 esac
 
-mv "${MODPATH}/python/stdlib/"* "${MODPATH}"
+tar -xf "${MODPATH}/python/stdlib.tar.xz" -C "${MODPATH}" \
+  --strip-components 1
 
 set_perm_recursive "${MODPATH}/system/bin" 0 0 0755 0744
 set_perm_recursive "${MODPATH}/usr/bin" 0 0 0755 0744
+set_perm_recursive "${MODPATH}/usr/lib" 0 0 0755 0644
 
 mkdir "${MODPATH}/usr/tmp"
 
