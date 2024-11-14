@@ -41,6 +41,6 @@ set_perm_recursive "${PYDROID_DIR}/usr/lib" 0 0 0755 0644
 link_files
 
 rm -rf "${MODPATH}/CHANGELOG.md" \
-  "${MODPATH}/LICENCE" \
+  "${MODPATH}/LICENSE" \
   "${MODPATH}/README.md" \
   "${MODPATH}/python"

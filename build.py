@@ -8,7 +8,7 @@ from zipfile import ZipFile
 INCLUDE = {
     "CHANGELOG.md",
     "customize.sh",
-    "LICENCE",
+    "LICENSE",
     "META-INF/com/google/android/update-binary",
     "META-INF/com/google/android/updater-script",
     "module.prop",
