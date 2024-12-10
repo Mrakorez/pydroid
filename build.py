@@ -22,7 +22,7 @@ INCLUDE = {
 INCLUDE_XZ = {
     "python/arm",
     "python/arm64",
-    "python/stdlib",
+    "python/common",
 }
 
 

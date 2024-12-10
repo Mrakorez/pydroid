@@ -31,7 +31,7 @@ case "${ARCH}" in
     ;;
 esac
 
-tar -xf "${MODPATH}/python/stdlib.tar.xz" -C "${PYDROID_DIR}" \
+tar -xf "${MODPATH}/python/common.tar.xz" -C "${PYDROID_DIR}" \
   --strip-components 1
 
 set_perm_recursive "${MODPATH}/system/bin" 0 0 0755 0744
