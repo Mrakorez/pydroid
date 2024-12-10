@@ -31,12 +31,12 @@ MODLIBS=           $(LOCALMODLIBS) $(BASEMODLIBS)
 VERSION=	3.13
 srcdir=		../../..
 VPATH=		../../..
-abs_srcdir=	/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/build/../../..
-abs_builddir=	/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/build
+abs_srcdir=	/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/build/../../..
+abs_builddir=	/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/build
 
 
-CC=		/home/da3m0n/dev/android-sdk/ndk/26.2.11394342/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang
-CXX=		/home/da3m0n/dev/android-sdk/ndk/26.2.11394342/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang++
+CC=		/home/da3m0n/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang
+CXX=		/home/da3m0n/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang++
 LINKCC=		$(PURIFY) $(CC)
 AR=		/usr/bin/llvm-ar
 READELF=	@READELF@
@@ -85,7 +85,7 @@ MAKESETUP=      $(srcdir)/Modules/makesetup
 OPT=		-DNDEBUG -g -O3 -Wall
 BASECFLAGS=	 -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-strict-overflow -Wsign-compare -Wunreachable-code
 BASECPPFLAGS=	-IObjects -IInclude -IPython
-CONFIGURE_CFLAGS=	 -march=armv7-a -mthumb -I/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/include
+CONFIGURE_CFLAGS=	-D__BIONIC_NO_PAGE_SIZE_MACRO -march=armv7-a -mthumb -I/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/include
 # CFLAGS_NODIST is used for building the interpreter and stdlib C extensions.
 # Use it when a compiler flag should _not_ be part of the distutils CFLAGS
 # once Python is installed (Issue #21121).
@@ -98,7 +98,7 @@ CONFIGURE_LDFLAGS_NODIST= -flto=thin -g
 # of _bootstrap_python and _freeze_module tools, which don't need LTO.
 CONFIGURE_LDFLAGS_NOLTO=-flto=thin
 CONFIGURE_CPPFLAGS=	
-CONFIGURE_LDFLAGS=	-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--no-undefined -lm -L/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/lib -march=armv7-a -Wl,--fix-cortex-a8
+CONFIGURE_LDFLAGS=	-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,-z,max-page-size=16384 -Wl,--no-undefined -lm -L/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/lib -march=armv7-a -Wl,--fix-cortex-a8
 # Avoid assigning CFLAGS, LDFLAGS, etc. so users can use them on the
 # command line to append to these values without stomping the pre-set
 # values.
@@ -301,8 +301,8 @@ MODULE__BLAKE2_STATE=yes
 MODULE__BLAKE2_CFLAGS=
 MODULE__BLAKE2_LDFLAGS=
 MODULE__CTYPES_STATE=yes
-MODULE__CTYPES_CFLAGS=-fno-strict-overflow -I/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/include
-MODULE__CTYPES_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/lib -lffi -ldl
+MODULE__CTYPES_CFLAGS=-fno-strict-overflow -I/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/include
+MODULE__CTYPES_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/lib -lffi -ldl
 MODULE__CURSES_STATE=missing
 MODULE__CURSES_PANEL_STATE=missing
 MODULE__DECIMAL_STATE=yes
@@ -312,8 +312,8 @@ MODULE__DBM_STATE=missing
 MODULE__GDBM_STATE=missing
 MODULE_READLINE_STATE=missing
 MODULE__SQLITE3_STATE=yes
-MODULE__SQLITE3_CFLAGS=-I/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/include -I$(srcdir)/Modules/_sqlite
-MODULE__SQLITE3_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/lib -lsqlite3
+MODULE__SQLITE3_CFLAGS=-I/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/include -I$(srcdir)/Modules/_sqlite
+MODULE__SQLITE3_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/lib -lsqlite3
 MODULE__TKINTER_STATE=missing
 MODULE__UUID_STATE=missing
 MODULE_ZLIB_STATE=yes
@@ -326,14 +326,14 @@ MODULE__BZ2_STATE=yes
 MODULE__BZ2_CFLAGS=
 MODULE__BZ2_LDFLAGS=-lbz2
 MODULE__LZMA_STATE=yes
-MODULE__LZMA_CFLAGS=-I/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/include
-MODULE__LZMA_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/lib -llzma
+MODULE__LZMA_CFLAGS=-I/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/include
+MODULE__LZMA_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/lib -llzma
 MODULE__SSL_STATE=yes
-MODULE__SSL_CFLAGS=-I/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/include
-MODULE__SSL_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/lib  -lssl -lcrypto
+MODULE__SSL_CFLAGS=-I/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/include
+MODULE__SSL_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/lib  -lssl -lcrypto
 MODULE__HASHLIB_STATE=yes
-MODULE__HASHLIB_CFLAGS=-I/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/include
-MODULE__HASHLIB_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/lib   -lcrypto
+MODULE__HASHLIB_CFLAGS=-I/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/include
+MODULE__HASHLIB_LDFLAGS=-L/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/lib   -lcrypto
 MODULE__TESTCAPI_STATE=yes
 MODULE__TESTCAPI_LDFLAGS=
 MODULE__TESTCLINIC_STATE=yes
@@ -366,7 +366,7 @@ EXEMODE=	755
 FILEMODE=	644
 
 # configure script arguments
-CONFIG_ARGS=	 '--host=arm-linux-androideabi' '--build=x86_64-pc-linux-gnu' '--with-build-python=/home/da3m0n/dev/Python-3.13.0/cross-build/build/python' '--without-ensurepip' '--enable-shared' '--without-static-libpython' '--with-openssl=/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix' '--with-lto' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=arm-linux-androideabi' 'PKG_CONFIG=pkg-config --define-prefix' 'PKG_CONFIG_LIBDIR=/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/lib/pkgconfig' 'CC=/home/da3m0n/dev/android-sdk/ndk/26.2.11394342/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang' 'CFLAGS= -march=armv7-a -mthumb -I/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/include' 'LDFLAGS=-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--no-undefined -lm -L/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/lib'
+CONFIG_ARGS=	 '--host=arm-linux-androideabi' '--build=x86_64-pc-linux-gnu' '--with-build-python=/home/da3m0n/dev/Python-3.13.1/cross-build/build/python' '--without-ensurepip' '--enable-shared' '--without-static-libpython' '--with-openssl=/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix' '--with-lto' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=arm-linux-androideabi' 'PKG_CONFIG=pkg-config --define-prefix' 'PKG_CONFIG_LIBDIR=/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/lib/pkgconfig' 'CC=/home/da3m0n/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang' 'CFLAGS=-D__BIONIC_NO_PAGE_SIZE_MACRO -march=armv7-a -mthumb -I/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/include' 'LDFLAGS=-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,-z,max-page-size=16384 -Wl,--no-undefined -lm -L/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/lib'
 
 
 # Subdirectories with code
@@ -416,9 +416,9 @@ BUILDPYTHON=	python$(BUILDEXE)
 
 HOSTRUNNER= 
 
-PYTHON_FOR_REGEN?=/home/da3m0n/dev/Python-3.13.0/cross-build/build/python
+PYTHON_FOR_REGEN?=/home/da3m0n/dev/Python-3.13.1/cross-build/build/python
 UPDATE_FILE=$(PYTHON_FOR_REGEN) $(srcdir)/Tools/build/update_file.py
-PYTHON_FOR_BUILD=_PYTHON_PROJECT_BASE=$(abs_builddir) _PYTHON_HOST_PLATFORM=$(_PYTHON_HOST_PLATFORM) PYTHONPATH=$(shell test -f pybuilddir.txt && echo $(abs_builddir)/`cat pybuilddir.txt`:)$(srcdir)/Lib _PYTHON_SYSCONFIGDATA_NAME=_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH) /home/da3m0n/dev/Python-3.13.0/cross-build/build/python
+PYTHON_FOR_BUILD=_PYTHON_PROJECT_BASE=$(abs_builddir) _PYTHON_HOST_PLATFORM=$(_PYTHON_HOST_PLATFORM) PYTHONPATH=$(srcdir)/Lib _PYTHON_SYSCONFIGDATA_NAME=_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH) _PYTHON_SYSCONFIGDATA_PATH=$(shell test -f pybuilddir.txt && echo $(abs_builddir)/`cat pybuilddir.txt`) /home/da3m0n/dev/Python-3.13.1/cross-build/build/python
 # Single-platform builds depend on $(BUILDPYTHON). Cross builds use an
 # external "build Python" and have an empty PYTHON_FOR_BUILD_DEPS.
 PYTHON_FOR_BUILD_DEPS=
@@ -426,7 +426,7 @@ PYTHON_FOR_BUILD_DEPS=
 # Single-platform builds use Programs/_freeze_module.c for bootstrapping and
 # ./_bootstrap_python Programs/_freeze_module.py for remaining modules
 # Cross builds use an external "build Python" for all modules.
-PYTHON_FOR_FREEZE=/home/da3m0n/dev/Python-3.13.0/cross-build/build/python
+PYTHON_FOR_FREEZE=/home/da3m0n/dev/Python-3.13.1/cross-build/build/python
 FREEZE_MODULE_BOOTSTRAP=$(PYTHON_FOR_FREEZE) $(srcdir)/Programs/_freeze_module.py
 FREEZE_MODULE_BOOTSTRAP_DEPS=$(srcdir)/Programs/_freeze_module.py
 FREEZE_MODULE=$(FREEZE_MODULE_BOOTSTRAP)
@@ -1094,7 +1094,7 @@ $(PYTHONFRAMEWORKDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK): \
 	$(LN) -fsn Versions/Current/$(PYTHONFRAMEWORK) $(PYTHONFRAMEWORKDIR)/$(PYTHONFRAMEWORK)
 	$(LN) -fsn Versions/Current/Resources $(PYTHONFRAMEWORKDIR)/Resources
 
-# This rule is for iOS, which requires an annoyingly just slighly different
+# This rule is for iOS, which requires an annoyingly just slightly different
 # format for frameworks to macOS. It *doesn't* use a versioned framework, and
 # the Info.plist must be in the root of the framework.
 $(PYTHONFRAMEWORKDIR)/$(PYTHONFRAMEWORK): \
@@ -2608,6 +2608,7 @@ TESTSUBDIRS=	idlelib/idle_test \
 		test/test_tomllib/data/valid/dates-and-times \
 		test/test_tomllib/data/valid/multiline-basic-str \
 		test/test_tools \
+		test/test_tools/i18n_data \
 		test/test_ttk \
 		test/test_unittest \
 		test/test_unittest/testmock \
@@ -2620,6 +2621,10 @@ TESTSUBDIRS=	idlelib/idle_test \
 		test/tkinterdata \
 		test/tokenizedata \
 		test/tracedmodules \
+		test/translationdata \
+		test/translationdata/argparse \
+		test/translationdata/getopt \
+		test/translationdata/optparse \
 		test/typinganndata \
 		test/wheeldata \
 		test/xmltestdata \

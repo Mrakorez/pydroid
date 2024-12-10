@@ -41,7 +41,7 @@ exec_prefix="${prefix}"
 exec_prefix_real=${prefix_real}
 includedir=$(echo "${prefix}/include" | sed "s#$prefix#$prefix_real#")
 libdir=$(echo "${exec_prefix}/lib" | sed "s#$prefix#$prefix_real#")
-CFLAGS=$(echo " -march=armv7-a -mthumb -I/home/da3m0n/dev/Python-3.13.0/cross-build/arm-linux-androideabi/prefix/include" | sed "s#$prefix#$prefix_real#")
+CFLAGS=$(echo "-D__BIONIC_NO_PAGE_SIZE_MACRO -march=armv7-a -mthumb -I/home/da3m0n/dev/Python-3.13.1/cross-build/arm-linux-androideabi/prefix/include" | sed "s#$prefix#$prefix_real#")
 VERSION="3.13"
 LIBM="-lm"
 LIBC=""

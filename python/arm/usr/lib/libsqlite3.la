@@ -5,10 +5,10 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname='libsqlite3.so'
+dlname='libsqlite3_python.so'
 
 # Names of this library.
-library_names='libsqlite3.so'
+library_names='libsqlite3_python.so libsqlite3.so'
 
 # The name of the static archive.
 old_library=''
