@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/system/bin/python3.13
 
 """
 The Python Debugger Pdb

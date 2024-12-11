@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/system/bin/python3.13
 
 """Base16, Base32, Base64 (RFC 3548), Base85 and Ascii85 data encodings"""
 

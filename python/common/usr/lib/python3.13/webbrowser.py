@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/system/bin/python3.13
 """Interfaces for launching and remotely controlling web browsers."""
 # Maintained by Georg Brandl.
 
