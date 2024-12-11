@@ -13,6 +13,8 @@ A Magisk module to install **Python 3.13.1** on Android (**ARM only**), includin
 
 ## Usage
 
+### Python
+
 Access Python from any terminal with:
 
 ```shell
@@ -20,6 +22,41 @@ su -c python3
 # or
 su -c python3.13
 ```
+
+### Installing Pip
+
+Install pip, the Python package manager, using the following command:
+
+```shell
+su -c python3 -m ensurepip
+```
+
+Once installed, you can access pip using:
+
+```shell
+su -c python3 -m pip
+```
+
+This gives you access to pip for installing and managing Python packages.
+
+### Installing Packages with Native Modules (Using Termux)
+
+For packages that require native modules (like those with C/C++ dependencies), you will need to use [Termux](https://github.com/termux/termux-app). Follow these steps to set it up:
+
+1. **Upgrade Packages**
+   ```shell
+   pkg update && pkg upgrade
+   ```
+
+2. **Install Required Tools**
+   ```shell
+   pkg install clang tsu
+   ```
+
+3. **Install Packages with Pip**
+   ```shell
+   sudo -E python3 -m pip install <package>
+   ```
 
 ## Known Issues
 
